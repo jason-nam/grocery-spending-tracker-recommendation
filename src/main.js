@@ -1,8 +1,10 @@
-const { generateRecommendations, simulateProductPurchase } = require('./recommendations');
+const { generateRecommendations } = require('./recommendations');
 
-// Simulate a user with id 'user123' buying 'product1'
-simulateProductPurchase('user123', 'product1');
 
-// Now generate recommendations for 'user123'
-const recommendations = generateRecommendations('user123');
-console.log(recommendations);
+async function main() {
+    const userId = 1; // Assuming a user ID to demonstrate
+    const recommendations = await generateRecommendations(userId);
+    console.log('Recommendations:', recommendations);
+}
+
+main().catch(console.error);

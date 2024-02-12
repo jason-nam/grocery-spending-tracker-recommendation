@@ -1,39 +1,21 @@
 const { getProductFeatures } = require('./productFeatures');
-const { getUserProfile, updateUserProfile } = require('./userProfile');
+const { buildUserProfile } = require('./userProfile');
 
-// Assuming a simple in-memory store for products
-const products = {
-  // productId: { name: 'ProductName', price: 9.99, ... }
-};
 
-// Function to generate recommendations based on user profile
-function generateRecommendations(userId) {
-  const userProfile = getUserProfile(userId);
-  const recommendedProducts = [];
+// Function to generate recommendations
+async function generateRecommendations(userId) {
+    const userProfile = await buildUserProfile(userId);
+    const productFeatures = await getProductFeatures();
+    let recommendations = [];
 
-  for (const [productId, product] of Object.entries(products)) {
-    const productFeature = getProductFeatures(productId);
-    let score = 0;
+    // Simplistic recommendation algorithm: recommend items with matching brands
+    productFeatures.forEach(product => {
+        if (userProfile[product.item_brand]) {
+            recommendations.push(product);
+        }
+    });
 
-    for (const [feature, weight] of Object.entries(userProfile)) {
-      if (productFeature[feature]) {
-        score += weight; // Simple scoring based on the user profile
-      }
-    }
-
-    // If the score is higher than a threshold, we recommend it
-    if (score > SOME_THRESHOLD) {
-      recommendedProducts.push(product);
-    }
-  }
-
-  return recommendedProducts;
+    return recommendations;
 }
 
-// Function to simulate a user buying a product, updating their profile
-function simulateProductPurchase(userId, productId) {
-  const productFeature = getProductFeatures(productId);
-  updateUserProfile(userId, productFeature);
-}
-
-module.exports = { generateRecommendations, simulateProductPurchase };
+module.exports = { generateRecommendations };

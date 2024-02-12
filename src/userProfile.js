@@ -1,28 +1,29 @@
-// User profiles will be built based on interactions with products
-let userProfiles = {
-    // userId: { featureName: weight, ... },
-  };
-  
-  // Function to update user profile with new product features
-  function updateUserProfile(userId, productFeatures) {
-    if (!userProfiles[userId]) {
-      userProfiles[userId] = {};
+const { Client } = require('pg'); // Postgres
+
+
+// Function to build a user profile from their purchase history
+async function buildUserProfile(userId) {
+    const profileQuery = `
+        SELECT ci.item_brand, COUNT(*) 
+        FROM items i 
+        JOIN trips t ON i.trip_id = t.trip_id 
+        JOIN classifiedItems ci ON i.item_key = ci.item_key 
+        WHERE t.user_id = $1 
+        GROUP BY ci.item_brand;`;
+    
+    try {
+        const res = await dbClient.query(profileQuery, [userId]);
+        const userProfile = {};
+        res.rows.forEach(row => {
+            userProfile[row.item_brand] = row.count;
+        });
+        return userProfile;
+    } catch (err) {
+        console.error('Error building user profile:', err.stack);
+        return {};
     }
-  
-    for (const [feature, value] of Object.entries(productFeatures)) {
-      if (value) {
-        if (!userProfiles[userId][feature]) {
-          userProfiles[userId][feature] = 0;
-        }
-        userProfiles[userId][feature] += 1; // Increase the weight if the feature is relevant
-      }
-    }
-  }
-  
-  // Function to get user profile
-  function getUserProfile(userId) {
-    return userProfiles[userId] || {};
-  }
-  
-  module.exports = { updateUserProfile, getUserProfile };
+}
+
+module.exports = { buildUserProfile };
+
   
