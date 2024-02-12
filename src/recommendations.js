@@ -1,11 +1,11 @@
-const { getProductFeatures } = require('./productFeatures');
+const { getProductFeaturesForUser } = require('./productFeatures');
 const { buildUserProfile } = require('./userProfile');
 
 
 // Function to generate recommendations
 async function generateRecommendations(userId) {
     const userProfile = await buildUserProfile(userId);
-    const productFeatures = await getProductFeatures();
+    const productFeatures = await getProductFeaturesForUser(userId);
     let recommendations = [];
 
     // Simplistic recommendation algorithm: recommend items with matching brands

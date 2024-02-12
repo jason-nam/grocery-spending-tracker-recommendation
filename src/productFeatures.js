@@ -3,7 +3,7 @@ const { Client } = require('pg');
 
 // Initialize the database client
 const dbClient = new Client({
-  // your db configuration
+  // db config
 });
 
 dbClient.connect();
