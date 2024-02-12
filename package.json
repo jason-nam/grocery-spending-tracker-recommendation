@@ -1,0 +1,14 @@
+{
+    "name": "grocery-spending-tracker-recommendation",
+    "version": "1.0.0",
+    "description": "A project for recommendation",
+    "main": "main.js",
+    "scripts": {
+        "start": "node main.js"
+    },
+    "author": "JN",
+    "license": "ISC",
+    "dependencies": {
+
+    }
+}
