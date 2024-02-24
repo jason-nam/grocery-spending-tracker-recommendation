@@ -1,5 +1,4 @@
-const { generateRecommendations } = require('./recommendations');
-
+import { generateRecommendations } from './generateRecommendations';
 
 async function main() {
     const userId = 1; // Assuming a user ID to demonstrate

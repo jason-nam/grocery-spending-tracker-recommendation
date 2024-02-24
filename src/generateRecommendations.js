@@ -1,6 +1,5 @@
-const { getProductFeaturesForUser } = require('./productFeatures');
-const { buildUserProfile } = require('./userProfile');
-
+import { getProductFeaturesForUser } from './productFeatures';
+import { buildUserProfile } from './userProfile';
 
 // Function to generate recommendations
 async function generateRecommendations(userId) {
@@ -18,4 +17,4 @@ async function generateRecommendations(userId) {
     return recommendations;
 }
 
-module.exports = { generateRecommendations };
+export { generateRecommendations };

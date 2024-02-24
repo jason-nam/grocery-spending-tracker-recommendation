@@ -1,5 +1,4 @@
-const { Client } = require('pg');
-
+import { Client } from 'pg';
 
 // Initialize the database client
 const dbClient = new Client({
@@ -26,4 +25,4 @@ async function getProductFeaturesForUser(userId) {
     }
 }
 
-module.exports = { getProductFeaturesForUser };
+export { getProductFeaturesForUser };

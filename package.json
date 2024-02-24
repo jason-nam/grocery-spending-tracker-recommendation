@@ -9,6 +9,8 @@
     "author": "JN",
     "license": "ISC",
     "dependencies": {
-
+        "natural": "^6.10.4",
+        "node-tfidf": "^0.0.2",
+        "pg": "^8.11.3"
     }
 }

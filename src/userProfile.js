@@ -1,5 +1,4 @@
-const { Client } = require('pg'); // Postgres
-
+import { Client } from 'pg';
 
 // Function to build a user profile from their purchase history
 async function buildUserProfile(userId) {
@@ -24,6 +23,5 @@ async function buildUserProfile(userId) {
     }
 }
 
-module.exports = { buildUserProfile };
-
+export {buildUserProfile};
   
