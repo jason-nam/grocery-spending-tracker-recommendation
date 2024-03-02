@@ -1,16 +1,25 @@
 {
-    "name": "grocery-spending-tracker-recommendation",
-    "version": "1.0.0",
-    "description": "A project for recommendation",
-    "main": "main.js",
-    "scripts": {
-        "start": "node main.js"
-    },
-    "author": "JN",
-    "license": "ISC",
-    "dependencies": {
-        "natural": "^6.10.4",
-        "node-tfidf": "^0.0.2",
-        "pg": "^8.11.3"
-    }
+  "name": "grocery-spending-tracker-recommendation",
+  "version": "1.0.0",
+  "description": "A project for recommendation",
+  "main": "main.js",
+  "scripts": {
+    "start": "node src/main.js"
+  },
+  "author": "JN",
+  "license": "ISC",
+  "dependencies": {
+    "natural": "^6.10.4",
+    "node-tfidf": "^0.0.2",
+    "pg": "^8.11.3"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jason-nam/grocery-spending-tracker-recommendation.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jason-nam/grocery-spending-tracker-recommendation/issues"
+  },
+  "homepage": "https://github.com/jason-nam/grocery-spending-tracker-recommendation#readme"
 }

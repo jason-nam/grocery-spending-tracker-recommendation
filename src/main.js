@@ -1,4 +1,5 @@
-import { Pool } from 'pg';
+import pg from 'pg';
+const { Pool } = pg;
 
 // Connection details for your database
 const pool = new Pool({
