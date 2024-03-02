@@ -1,14 +1,14 @@
 import pg from 'pg';
 const { Pool } = pg;
+import pool from '../../db.js';
 
-// Connection details for your database
-const pool = new Pool({
-    user: 'your_username',
-    host: 'your_host',
-    database: 'your_database',
-    password: 'your_password',
-    port: 5432,
-});
+// const pool = new Pool({
+//     user: 'your_username',
+//     host: 'your_host',
+//     database: 'your_database',
+//     password: 'your_password',
+//     port: 5432,
+// });
 
 /**
  * Function to get frequently purchased items for a user
